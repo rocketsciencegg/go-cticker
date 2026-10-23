@@ -1,4 +1,4 @@
-# go-cticker [![Go Report Card](https://goreportcard.com/badge/github.com/multiplay/go-cticker)](https://goreportcard.com/report/github.com/multiplay/go-cticker) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/multiplay/go-cticker/blob/master/LICENSE) [![GoDoc](https://godoc.org/github.com/multiplay/go-cticker?status.svg)](https://godoc.org/github.com/multiplay/go-cticker) [![Build Status](https://travis-ci.org/multiplay/go-cticker.svg?branch=master)](https://travis-ci.org/multiplay/go-cticker)
+# go-cticker [![Go Report Card](https://goreportcard.com/badge/github.com/multiplay/go-cticker)](https://goreportcard.com/report/github.com/multiplay/go-cticker) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/multiplay/go-cticker/blob/master/LICENSE) [![GoDoc](https://godoc.org/github.com/multiplay/go-cticker?status.svg)](https://godoc.org/github.com/multiplay/go-cticker) [![Build Status](https://github.com/rocketsciencegg/go-cticker/actions/workflows/go.yml/badge.svg)](https://github.com/rocketsciencegg/go-cticker/actions/workflows/go.yml)
 
 go-cticker is a [Go](http://golang.org/) library that provides a ticker which ticks according to wall clock and is reliable under clock drift and clock adjustments; that is if you ask it to tick on the minute it will ensure that it does so even if the underlying clock is inaccurate or gets adjusted.
 
@@ -6,6 +6,17 @@ Features
 --------
 * Reliable under clock drift.
 * Reliable under clock adjustments.
+
+Continuous integration
+----------------------
+GitHub Actions tests Go 1.20 (the minimum required by `time.Time.Compare`) and
+the latest stable Go release with `check-latest` enabled. At the time of this
+update, the official stable release is Go 1.27.3. Both jobs run tests, the race
+detector, vet, and build.
+
+Until module metadata is committed, CI creates temporary module metadata using
+the existing import path and Testify v1.12.1. Once a module manifest is present,
+CI uses its dependencies without modifying them.
 
 Installation
 ------------

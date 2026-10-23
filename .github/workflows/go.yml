@@ -1,0 +1,50 @@
+name: Go
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Go ${{ matrix.go }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        go: ['1.20.x', stable]
+    env:
+      GOMAXPROCS: '2'
+      GOTOOLCHAIN: local
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: ${{ matrix.go }}
+          check-latest: true
+          cache: false
+      - name: Prepare dependencies
+        run: |
+          # Support the legacy checkout until module metadata is committed.
+          if [ ! -f go.mod ]; then
+            go mod init github.com/multiplay/go-cticker
+            go mod edit -go=1.20
+            go get github.com/stretchr/testify@v1.12.1
+            go mod tidy
+          fi
+          go mod download
+          go mod verify
+      - name: Test
+        run: go test -p 2 -count=1 -timeout=120s ./...
+      - name: Race test
+        run: go test -p 2 -race -count=1 -timeout=120s ./...
+      - name: Vet
+        run: go vet -p 2 ./...
+      - name: Build
+        run: go build -p 2 ./...
