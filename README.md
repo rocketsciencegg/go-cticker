@@ -1,4 +1,4 @@
-# go-cticker [![Go Report Card](https://goreportcard.com/badge/github.com/multiplay/go-cticker)](https://goreportcard.com/report/github.com/multiplay/go-cticker) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/multiplay/go-cticker/blob/master/LICENSE) [![GoDoc](https://godoc.org/github.com/multiplay/go-cticker?status.svg)](https://godoc.org/github.com/multiplay/go-cticker) [![Build Status](https://travis-ci.org/multiplay/go-cticker.svg?branch=master)](https://travis-ci.org/multiplay/go-cticker)
+# go-cticker [![Go Report Card](https://goreportcard.com/badge/github.com/multiplay/go-cticker)](https://goreportcard.com/report/github.com/multiplay/go-cticker) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/multiplay/go-cticker/blob/master/LICENSE) [![GoDoc](https://godoc.org/github.com/multiplay/go-cticker?status.svg)](https://godoc.org/github.com/multiplay/go-cticker) [![Build Status](https://github.com/rocketsciencegg/go-cticker/actions/workflows/go.yml/badge.svg)](https://github.com/rocketsciencegg/go-cticker/actions/workflows/go.yml)
 
 go-cticker is a [Go](http://golang.org/) library that provides a ticker which ticks according to wall clock and is reliable under clock drift and clock adjustments; that is if you ask it to tick on the minute it will ensure that it does so even if the underlying clock is inaccurate or gets adjusted.
 
@@ -9,6 +9,10 @@ Features
 
 Installation
 ------------
+Requires Go 1.20 or newer. The module retains the existing
+`github.com/multiplay/go-cticker` import path. GitHub Actions runs race tests
+and vet on Go 1.27.
+
 ```sh
 go get -u github.com/multiplay/go-cticker
 ```
