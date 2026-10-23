@@ -9,10 +9,9 @@ Features
 
 Continuous integration
 ----------------------
-GitHub Actions tests Go 1.20 (the minimum required by `time.Time.Compare`) and
-the latest stable Go release with `check-latest` enabled. At the time of this
-update, the official stable release is Go 1.27.3. Both jobs run tests, the race
-detector, vet, and build.
+GitHub Actions tests Go 1.27 with `check-latest` enabled to select the latest
+available patch release in that series. The job runs tests, the race detector,
+vet, and build.
 
 Until module metadata is committed, CI creates temporary module metadata using
 the existing import path and Testify v1.12.1. Once a module manifest is present,
