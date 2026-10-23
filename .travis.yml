@@ -1,13 +1,11 @@
 language: go
   
 go:
-  - 1.x
-  - master
+  - '1.27'
 
 install:
   - go mod download
 
 script:
-  - GOMAXPROCS=2 go test -p 2 -v -race ./...
+  - go test -v -race ./...
   - go vet ./...
-  - go build ./...
