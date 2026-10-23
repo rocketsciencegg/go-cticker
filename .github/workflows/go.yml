@@ -25,16 +25,8 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
           check-latest: true
-          cache: false
       - name: Prepare dependencies
         run: |
-          # Support the legacy checkout until module metadata is committed.
-          if [ ! -f go.mod ]; then
-            go mod init github.com/multiplay/go-cticker
-            go mod edit -go=1.20
-            go get github.com/stretchr/testify@v1.12.1
-            go mod tidy
-          fi
           go mod download
           go mod verify
       - name: Test
