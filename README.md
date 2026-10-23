@@ -9,9 +9,6 @@ Features
 
 Installation
 ------------
-Requires Go 1.20 or newer. The module retains its existing
-`github.com/multiplay/go-cticker` import path.
-
 ```sh
 go get -u github.com/multiplay/go-cticker
 ```
