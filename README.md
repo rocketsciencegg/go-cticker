@@ -10,8 +10,8 @@ Features
 Continuous integration
 ----------------------
 GitHub Actions tests Go 1.27 with `check-latest` enabled to select the latest
-available patch release in that series. The job runs tests, the race detector,
-vet, and build.
+available patch release in that series. The job runs race-enabled tests and
+go vet.
 
 Until module metadata is committed, CI creates temporary module metadata using
 the existing import path and Testify v1.12.1. Once a module manifest is present,

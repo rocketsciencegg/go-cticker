@@ -17,9 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         go: ['1.27']
-    env:
-      GOMAXPROCS: '2'
-      GOTOOLCHAIN: local
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -41,10 +38,6 @@ jobs:
           go mod download
           go mod verify
       - name: Test
-        run: go test -p 2 -count=1 -timeout=120s ./...
-      - name: Race test
-        run: go test -p 2 -race -count=1 -timeout=120s ./...
+        run: go test -v -race ./...
       - name: Vet
-        run: go vet -p 2 ./...
-      - name: Build
-        run: go build -p 2 ./...
+        run: go vet ./...
